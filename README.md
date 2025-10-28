@@ -245,11 +245,15 @@ git clone https://github.com/thien94/orb_slam3_ros.git
 
 # Build workspace
 cd ~/catkin_ws
-catkin_make
+catkin build
 source devel/setup.bash
 
 # Run RGB-D SLAM
-roslaunch orb_slam3_ros rgbd.launch   config_path:=$HOME/AstraProPlus_RGBD.yaml
+cd ~/catkin_ws
+source devel/setup.bash
+
+# Use the correct package name: orb_slam3_ros (not orb_slam3_ros_wrapper)
+roslaunch orb_slam3_ros euroc_mono.launch
 ```
 
 ### Option 2: Record and Process Offline
